@@ -49,6 +49,15 @@ def updateScore(winner, score):
     else:
         return score
 
+# returns the Move represented by the move number
+def getMove(moveNum):
+    moves = {
+        1: "Rock",
+        2: "Paper",
+        3: "Scissor"
+    }
+    return moves.get(moveNum)
+
 # displays the moves of the user and computer, who won, and the score
 def displayResults(userMove, comMove, winner, score):
     if winner !='TIE':
