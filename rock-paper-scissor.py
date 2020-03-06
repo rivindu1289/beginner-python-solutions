@@ -80,10 +80,9 @@ def displayResults(userMove, comMove, winner, score):
 # main function
 if __name__ == "__main__":
     score = [0,0]
+    play = True
 
-    play = 'y'
-
-    while play != 'n': # loop to play as many times as the user likes
+    while play: # loop to play as many times as the user likes
         userMove = getUserMove()
         comMove = getComputerMove()
         winner = getWinner(userMove, comMove)
@@ -91,4 +90,12 @@ if __name__ == "__main__":
 
         displayResults(userMove, comMove, winner, score)
         
-        play = input('Would you like to play again (y/n)?:')
+        while True: # loop for 'play again?' to check invalid inputs
+            playAgain = input('Would you like to play again (y/n)?:')
+            if playAgain == 'y' or playAgain == 'Y':
+                play = True
+                break
+            elif playAgain == 'n' or playAgain == 'N':
+                play = False
+                break
+            print('Invalid input, try again')    
