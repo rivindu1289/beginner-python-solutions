@@ -8,8 +8,12 @@ from random import randint as getRandom
 # - 2 = Paper
 # - 3 = Scissor
 def getUserMove():
-    print('Moves:\n1. Rock\n2. Paper\n3. Scissor')
-    userMove = input('Pick Rock, Paper, or Scissors (1, 2, or 3):')
+    print('\n\nclearMoves:\n1. Rock\n2. Paper\n3. Scissor')
+    while True:
+        userMove = input('Pick Rock, Paper, or Scissors (1, 2, or 3):')
+        if userMove == '1' or userMove == '2' or userMove == '3':
+            break
+        print('Invalid input, try again')
     return int(userMove)
 
 # gets a random move from the computer
