@@ -1,14 +1,22 @@
+# Author: Rivindu Wijedoru (rivindu1289)
+# Rock Paper Scissors program
+
 from random import randint as getRandom
 
+# gets what move the user selects:
+# - 1 = Rock
+# - 2 = Paper
+# - 3 = Scissor
 def getUserMove():
     print('Moves:\n1. Rock\n2. Paper\n3. Scissor')
     userMove = input('Pick Rock, Paper, or Scissors (1, 2, or 3):')
     return int(userMove)
 
+# gets a random move from the computer
 def getComputerMove():
     return getRandom(1,3)
 
-# returns 'COM', 'USER', or 'TIE', based on the moves of the user and computer
+# returns 'COM' or 'USER' as the winner, or 'TIE' if there's a tie, based on the moves of the user and computer
 def getWinner(userMove, comMove):
     if userMove == 1:
         if comMove == 1:
@@ -32,6 +40,7 @@ def getWinner(userMove, comMove):
         else:
             return 'TIE'
 
+# increments the winner's score by 1, does nothing if there is a tie
 def updateScore(winner, score):
     if winner == 'USER':
         return [score[0]+1, score[1]]
@@ -40,7 +49,8 @@ def updateScore(winner, score):
     else:
         return score
 
-def displayScore(winner, score):
+# displays the moves of the user and computer, who won, and the score
+def displayResults(userMove, comMove, winner, score):
     if winner !='TIE':
         print(winner,'won!')
         print('USER:', score[0],'\tCOM:',score[1])
@@ -48,17 +58,18 @@ def displayScore(winner, score):
         print('Tie game!')
         print('USER:', score[0],'\tCOM:',score[1])
 
+# main function
 if __name__ == "__main__":
     score = [0,0]
 
     play = 'y'
 
-    while play != 'n':
+    while play != 'n': # loop to play as many times as the user likes
         userMove = getUserMove()
         comMove = getComputerMove()
         winner = getWinner(userMove, comMove)
         score = updateScore(winner, score)
 
-        displayScore(winner,score)
+        displayResults(userMove, comMove, winner, score)
         
         play = input('Would you like to play again (y/n)?:')
