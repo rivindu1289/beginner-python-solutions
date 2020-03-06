@@ -64,7 +64,13 @@ def getMove(moveNum):
 
 # displays the moves of the user and computer, who won, and the score
 def displayResults(userMove, comMove, winner, score):
+    print("\nUSER:", getMove(userMove), "\tCOM:", getMove(comMove))
+
     if winner !='TIE':
+        if winner == 'USER':
+            print(getMove(userMove), 'beats', getMove(comMove))
+        else:
+            print(getMove(comMove), 'beats', getMove(userMove))
         print(winner,'won!')
         print('USER:', score[0],'\tCOM:',score[1])
     else:
